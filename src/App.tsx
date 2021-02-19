@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { AboutGame } from './components/AboutGame';
 import { FormToLogin } from './components/FormToLogin';
@@ -12,9 +12,10 @@ const App: React.FunctionComponent = () => {
       <Navbar />
       <main className="container">
         <Switch>
-          <Route component={AboutGame} path="/" exact />
           <Route component={FormToLogin} path="/login" />
+          <Route component={AboutGame} path="/about" exact />
           <Route component={Game} path="/game" />
+          <Redirect from='/' to='/login'/>
         </Switch>
       </main>
       <Footer />

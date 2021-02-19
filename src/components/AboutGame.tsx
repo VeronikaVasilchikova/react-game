@@ -1,37 +1,45 @@
-import React from 'react';
-import Carousel from 'react-material-ui-carousel'
-import { Paper, Button } from '@material-ui/core'
+import React, { useState } from 'react';
+import Slide from '@material-ui/core/Slide';
+import { AboutGameItem } from './AboutGameItem';
+import { AboutGameArrow } from './AboutGameArrow';
+import { ABOUT_GAME_INFO_ITEMS } from '../constants/constants';
+import { Direction } from '../interfaces/interfaces';
 
-const Item: React.FunctionComponent = (props) => {
-  return (
-    <Paper>
-      {/* <h2>{props.item.name}</h2>
-      <p>{props.item.description}</p> */}
+export const AboutGame: React.FunctionComponent = () => {
+  const [index, setIndex] = useState(0);
+  const [slideIn, setSlideIn] = useState(true);
+  const [slideDirectionValue, setSlideDirection] = useState<Direction>('down');
+  const content = ABOUT_GAME_INFO_ITEMS[index];
+  const numSlides = ABOUT_GAME_INFO_ITEMS.length;
 
-      <Button className="CheckButton">
-          Check it out!
-      </Button>
-    </Paper>
-  )
-}
+  const onArrowClick = (direction: Direction) => {
+    const increment = direction === 'left' ? -1 : 1;
+    const newIndex = (index + increment + numSlides) % numSlides;
 
-export const AboutGame: React.FunctionComponent = (props) => {
-  const items = [
-    {
-      name: "Random Name #1",
-      description: "Probably the most random thing you have ever seen!"
-    },
-    {
-      name: "Random Name #2",
-      description: "Hello World!"
-    }
-  ]
+    const oppDirection: Direction = direction === 'left' ? 'right' : 'left';
+    setSlideDirection(direction);
+    setSlideIn(false);
+
+    setIndex(newIndex);
+    setSlideDirection(oppDirection);
+    setSlideIn(true);
+  };
 
   return (
-    <Carousel>
-      {
-        // items.map((item, i) => <Item key={i} item={item} /> )
-      }
-    </Carousel>
+    <div className='App'>
+      <AboutGameArrow
+        direction='left'
+        clickFunction={() => onArrowClick('left')}
+      />
+        <Slide in={slideIn} direction={slideDirectionValue} >
+          <div>
+          <AboutGameItem content={content} />
+          </div>
+        </Slide>
+      <AboutGameArrow
+        direction='right'
+        clickFunction={() => onArrowClick('right')}
+      />
+    </div>
   )
 }

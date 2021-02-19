@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import GameIcon from '@material-ui/icons/Games';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -32,12 +32,8 @@ export const Navbar: React.FunctionComponent = () => {
         <Typography variant="h6" color="inherit" noWrap className={classes.title}>
           React Memory Game
         </Typography>
-        <Link color="inherit" className={classes.link}>
-          <NavLink to="/">About the game</NavLink>
-        </Link>
-        <Link color="inherit">
-          <NavLink to="/login">Login</NavLink>
-        </Link>
+        <Link color="inherit" to="/about" component={RouterLink} className={classes.link}>About the game</Link>
+        <Link color="inherit" to="/login" component={RouterLink}>Login</Link>
       </Toolbar>
     </AppBar>
   )
