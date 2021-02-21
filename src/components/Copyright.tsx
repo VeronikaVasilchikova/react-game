@@ -6,14 +6,14 @@ import YoutubeIcon from '@material-ui/icons/YouTube';
 
 export const Copyright: React.FunctionComponent = () => {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant='body2' color='textSecondary' align='center'>
       {'Copyright © '}
       <GiHubIcon />
-      <Link color="inherit" href="https://github.com/VeronikaVasilchikova/react-game">
+      <Link color='inherit' href='https://github.com/VeronikaVasilchikova/react-game'>
         Source code
       </Link>{' '}
       <YoutubeIcon />
-      <Link color="inherit" href="https://github.com/VeronikaVasilchikova/react-game">
+      <Link color='inherit' href='https://github.com/VeronikaVasilchikova/react-game'>
         Description
       </Link>{' '}
       {new Date().getFullYear()}

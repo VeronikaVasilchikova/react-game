@@ -19,15 +19,58 @@ main {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-.px1 {
-  padding-left: 1rem;
-  padding-right: 1rem;
+
+.cardField {
+  display: flex;
+  flex-wrap: wrap;
+  flex: auto;
+  width: 900px;
+  margin: 3% auto;
 }
 
-.mt2 {
-  margin-top: 2rem;
+.cardField > * {
+  margin: 10px;
+  width: 182px;
+  height: 216px;
+  cursor: pointer;
+}
+
+.image {
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  border-radius: 5px;
+  box-shadow: 2px 2px 3px black;
+}
+
+.image-blank {
+  background: url("./assets/space.jpg") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  border-radius: 5px;
+  box-shadow: 2px 2px 3px black;
+}
+
+.about-game {
+  width: 500px;
+  margin: 15% auto;
+  position: relative;
+  cursor: pointer;
+}
+
+.about-arrow {
+  position: absolute;
+  top: 50%;
+}
+
+.about-arrow.right {
+  right: -15%;
+}
+
+.about-arrow.left {
+  left: 0%;
 }

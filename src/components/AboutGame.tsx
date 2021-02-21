@@ -26,7 +26,7 @@ export const AboutGame: React.FunctionComponent = () => {
   };
 
   return (
-    <div className='App'>
+    <div className='about-game'>
       <AboutGameArrow
         direction='left'
         clickFunction={() => onArrowClick('left')}
