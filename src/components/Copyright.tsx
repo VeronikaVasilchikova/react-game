@@ -6,26 +6,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Link from '@material-ui/core/Link';
 import GiHubIcon from '@material-ui/icons/GitHub';
 import YoutubeIcon from '@material-ui/icons/YouTube';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-  copyright: {
-    flexGrow: 1,
-  },
-  icon: {
-    marginRight: theme.spacing(1),
-  },
-  logo: {
-    width: '50px',
-    marginRight: theme.spacing(1),
-  },
-  link: {
-    marginRight: theme.spacing(2),
-  }
-}));
+import copyrightStyles from '../styles/copiright-styles';
 
 export const Copyright: React.FunctionComponent = () => {
-  const classes = useStyles();
+  const classes = copyrightStyles();
 
   return (
     <AppBar position="static" color="primary">

@@ -1,7 +1,6 @@
 export interface InfoItem {
   name: string;
   description: string;
-  backgroundColor: string;
 }
 
 export interface CarouselItem {

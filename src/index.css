@@ -58,7 +58,7 @@ code {
 
 .about-game {
   width: 500px;
-  margin: 15% auto;
+  margin: 20% auto;
   position: relative;
   cursor: pointer;
 }
@@ -83,4 +83,52 @@ code {
 .fullscreen-enabled {
   background: #fff;
   padding: 10rem;
+}
+
+@media (max-width: 1270px) {
+  .about-arrow.right {
+    right: 7%;
+  }
+}
+
+@media (max-width: 960px) {
+  .about-game {
+    width: 400px;
+    margin: 25% auto;
+  }
+}
+
+@media (max-width: 840px) {
+  .card-field {
+    width: 600px;
+  }
+
+  .card-field > * {
+    width: 120px;
+    height: 142px;
+    margin: 15px;
+  }
+}
+
+@media (max-width: 640px) {
+  .card-field {
+    width: 460px;
+  }
+
+  .card-field > * {
+    width: 90px;
+    height: 108px;
+    margin: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-game {
+    width: 350px;
+    margin: 45% auto;
+  }
+
+  .about-arrow.right {
+    right: -5%;
+  }
 }

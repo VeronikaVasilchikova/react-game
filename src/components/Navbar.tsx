@@ -14,24 +14,10 @@ import IconButton from '@material-ui/core/IconButton';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import VolumeOffIcon from '@material-ui/icons/VolumeOff';
 import SaveGameState from '../utils/saveGameState';
-
-const useStyles = makeStyles((theme) => ({
-  icon: {
-    marginRight: theme.spacing(2),
-  },
-  toolbar: {
-    paddingRight: 24,
-  },
-  title: {
-    flexGrow: 1,
-  },
-  link: {
-    marginRight: theme.spacing(2),
-  }
-}));
+import navbarStyles from '../styles/navbar-style';
 
 export const Navbar: React.FunctionComponent<UserInfo> = (props) => {
-  const classes = useStyles();
+  const classes = navbarStyles();
   const [isDarkState, setDarkState] = SaveGameState('isDarkState', false);
   const [isMuted, setIsMuted] = SaveGameState('isMuted', false);
 
@@ -80,7 +66,7 @@ export const Navbar: React.FunctionComponent<UserInfo> = (props) => {
           </IconButton>
         </Tooltip>
         <Link color='inherit' to='/about' component={RouterLink} className={classes.link}>About the game</Link>
-        <Link color='inherit' to='/login' component={RouterLink}>{props.userName ? 'Exit' : 'Login'}</Link>
+        <Link color='inherit' to='/login' component={RouterLink} className={classes.linkText}>{props.userName ? 'Exit' : 'Login'}</Link>
       </Toolbar>
     </AppBar>
   )
