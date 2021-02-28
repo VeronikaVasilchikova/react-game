@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { CardImages } from '../card-pictures/index';
 import { CardItem } from '../interfaces/interfaces';
 
@@ -68,15 +68,15 @@ export const Cards: React.FunctionComponent<CardItem> = (props) => {
       }
     }
 
-    let allPictures = document.getElementsByClassName('image-blank');
+    let allPictures = document.getElementsByClassName('card-with-space');
     if (allPictures.length < 1) {
       props.endGame(true);
       if(props.isMutedGame) {
         playGameEnd();
       }
-      let reset = document.getElementsByClassName('image');
+      let reset = document.getElementsByClassName('card-with-hero');
       for (let i = 0; i < reset.length; i++) {
-        reset[i].classList.add('image-blank');
+        reset[i].classList.add('card-with-space');
         reset[i].setAttribute('data-check', 'false');
         characters = [];
       }
@@ -98,22 +98,22 @@ export const Cards: React.FunctionComponent<CardItem> = (props) => {
     classList: { add: (arg0: string) => void; remove: (arg0: string) => void; }; }) => {
       if(target.getAttribute('data-check') === 'true') {
         target.setAttribute('data-check', 'false');
-        target.classList.add('image-blank');
+        target.classList.add('card-with-space');
       }
       else {
         target.setAttribute('data-check', 'true');
-        target.classList.remove('image-blank');
+        target.classList.remove('card-with-space');
       }
   };
 
   return (
-    <div className='cardField'>
+    <div className='card-field'>
       {CardImages
       .sort(() => Math.random() - 0.5)
       .map((element, index) => {
         return (
           <div
-            className='image image-blank'
+            className='card-with-hero card-with-space'
             key={index}
             data-check='false'
             data-name={element.name}

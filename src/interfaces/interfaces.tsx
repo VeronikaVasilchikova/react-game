@@ -53,4 +53,12 @@ export interface PlayTheGameItem {
   isMutedValue: boolean;
 }
 
+export interface Document extends HTMLDocument {
+  fullscreenElement: any;
+  mozFullScreenElement: any;
+  msFullscreenElement: any;
+  webkitFullscreenElement: any;
+  onfullscreenchange: any;
+}
+
 export type Direction = 'left' | 'right' | 'up' | 'down';
