@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import GameIcon from '@material-ui/icons/Games';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import Tooltip from '@material-ui/core/Tooltip';
 import { makeStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import { UserInfo } from '../interfaces/interfaces';
@@ -63,16 +64,20 @@ export const Navbar: React.FunctionComponent<UserInfo> = (props) => {
             Score: {props.userScore}
           </Typography> :
         null}
-        <IconButton
-          onClick={handleThemeChange}
-        >
-          {isDarkState ? <Brightness4Icon /> : <Brightness7Icon />}
-        </IconButton>
-        <IconButton
-          onClick={handleSoundChange}
-        >
-          {isMuted ? <VolumeUpIcon /> : <VolumeOffIcon />}
-        </IconButton>
+        <Tooltip title={isDarkState ? 'Make theme light' : 'Make theme dark'}>
+          <IconButton
+            onClick={handleThemeChange}
+          >
+            {isDarkState ? <Brightness4Icon /> : <Brightness7Icon />}
+          </IconButton>
+        </Tooltip>
+        <Tooltip title={isMuted ? 'Turn the volume off' : 'Turn the sound on'}>
+          <IconButton
+            onClick={handleSoundChange}
+          >
+            {isMuted ? <VolumeUpIcon /> : <VolumeOffIcon />}
+          </IconButton>
+        </Tooltip>
         <Link color='inherit' to='/about' component={RouterLink} className={classes.link}>About the game</Link>
         <Link color='inherit' to='/login' component={RouterLink}>{props.userName ? 'Exit' : 'Login'}</Link>
       </Toolbar>
