@@ -15,6 +15,10 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(1),
   },
+  logo: {
+    width: '50px',
+    marginRight: theme.spacing(1),
+  },
   link: {
     marginRight: theme.spacing(2),
   }
@@ -25,17 +29,42 @@ export const Copyright: React.FunctionComponent = () => {
 
   return (
     <AppBar position="static" color="primary">
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
         <Toolbar>
-          <Typography variant="body2" color="inherit" className={classes.copyright}>
+          <Typography
+            variant="body2"
+            color="inherit"
+            className={classes.copyright}
+          >
             {new Date().getFullYear()} {'Copyright © '}
           </Typography>
+          <img src="https://rs.school/images/rs_school_js.svg" alt="rsschool logo" className={classes.logo}/>
+          <Link
+            color='inherit'
+            href='https://rs.school/js/'
+            target="_blank"
+            rel="noopener"
+            className={classes.link}
+          >
+            The Rolling Scopes School Course
+          </Link>{' '}
           <GiHubIcon className={classes.icon}/>
-          <Link color='inherit' href='https://github.com/VeronikaVasilchikova/react-game' className={classes.link}>
+          <Link
+            color='inherit'
+            href='https://github.com/VeronikaVasilchikova/react-game'
+            target="_blank"
+            rel="noopener"
+            className={classes.link}
+          >
             Source code
           </Link>{' '}
           <YoutubeIcon className={classes.icon}/>
-          <Link color='inherit' href='https://github.com/VeronikaVasilchikova/react-game'>
+          <Link
+            color='inherit'
+            href='https://github.com/VeronikaVasilchikova/react-game'
+            target="_blank"
+            rel="noopener"
+          >
             Description
           </Link>{' '}
         </Toolbar>
