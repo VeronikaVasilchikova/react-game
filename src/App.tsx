@@ -1,49 +1,80 @@
-import React from 'react';
+import React, { useState } from 'react';
+import CssBaseline from "@material-ui/core/CssBaseline";
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { AboutGame } from './components/AboutGame';
 import { FormToLogin } from './components/FormToLogin';
 import { PlayTheGame } from './components/PlayTheGame';
 import { Footer } from './components/Footer';
-import { AppItem } from './interfaces/interfaces';
+import {
+  purple,
+  deepPurple,
+  lightBlue,
+  blue,
+} from "@material-ui/core/colors";
 
-class App extends React.Component<{}, AppItem> {
-  constructor(props: AppItem | Readonly<AppItem>) {
-    super(props);
-    this.state = {
-      userName: '',
-      userScore: 0,
-    };
+// For Switch Theming
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
-    this.handleUserName = this.handleUserName.bind(this);
-    this.handleUserScore = this.handleUserScore.bind(this);
+const App: React.FunctionComponent = () => {
+  const [userName, setUserName] = useState('');
+  const [userScore, setUserScore] = useState(0);
+  const [darkStateTheme, setDarkStateTheme] = useState(false);
+
+  const darkTheme = createMuiTheme({
+    palette: {
+      type: 'dark',
+      primary: {
+        main: purple[500]
+      },
+      secondary: {
+        main: deepPurple[900]
+      }
+    }
+  });
+
+  const lightTheme = createMuiTheme({
+    palette: {
+      type: 'light',
+      primary: {
+        main: lightBlue[500]
+      },
+      secondary: {
+        main: blue[500]
+      }
+    }
+  });
+
+  const handleUserName = (name: string) => {
+    setUserName(name);
+  };
+
+  const handleUserScore = (score: number) => {
+    setUserScore(score);
+  };
+
+  const handleDarkstate = (darkStateValue: boolean) => {
+    setDarkStateTheme(darkStateValue);
   }
 
-  handleUserName = (name: string) => {
-    this.setState({ userName: name });
-  };
-
-  handleUserScore = (score: number) => {
-    this.setState({ userScore: score });
-  };
-
-  render() {
-    return (
+  return (
+    <ThemeProvider theme={darkStateTheme ? darkTheme : lightTheme}>
+      <CssBaseline />
       <BrowserRouter>
-        <Navbar userName={this.state.userName} userScore={this.state.userScore}/>
+        <Navbar userName={userName} userScore={userScore} handlerThemeFromParent={handleDarkstate} />
         <main>
           <Switch>
             <Route
               path="/login"
               render={(props) => (
-                <FormToLogin {...props} handlerFormFromParant={this.handleUserName} />
+                <FormToLogin {...props} handlerFormFromParent={handleUserName} />
               )}
             />
             <Route component={AboutGame} path="/about" exact />
             <Route
               path="/game"
               render={(props) => (
-                <PlayTheGame {...props} handlerScoreFromParent={this.handleUserScore} />
+                <PlayTheGame {...props} handlerScoreFromParent={handleUserScore} />
               )}
             />
             <Redirect from='/' to='/login'/>
@@ -51,8 +82,8 @@ class App extends React.Component<{}, AppItem> {
         </main>
         <Footer />
       </BrowserRouter>
-    )
-  }
+    </ThemeProvider>
+  )
 }
 
 export default App;

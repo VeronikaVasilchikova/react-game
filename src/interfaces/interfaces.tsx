@@ -1,7 +1,3 @@
-export interface AppItem {
-  userName: string;
-  userScore: number;
-}
 export interface InfoItem {
   name: string;
   description: string;
@@ -42,10 +38,11 @@ export interface MessageItem {
 export interface UserInfo {
   userName: string;
   userScore: number;
+  handlerThemeFromParent: any;
 }
 
 export interface FormDataItem {
-  handlerFormFromParant: any;
+  handlerFormFromParent: any;
 }
 
 export interface PlayTheGameItem {

@@ -47,7 +47,7 @@ code {
 }
 
 .image-blank {
-  background: url("./assets/space.jpg") !important;
+  background: url("./card-pictures/space.jpg") !important;
   background-size: contain !important;
   background-repeat: no-repeat !important;
   background-position: center !important;

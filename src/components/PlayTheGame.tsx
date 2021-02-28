@@ -14,7 +14,6 @@ export const PlayTheGame: React.FunctionComponent<PlayTheGameItem> = (props) => 
   const handleEndGame = (param: boolean) => {
     if(param) {
       setShowEndGame(true);
-      setFinalScore(finalScore + 1);
     }
     else {
       setShowEndGame(false);
@@ -22,9 +21,9 @@ export const PlayTheGame: React.FunctionComponent<PlayTheGameItem> = (props) => 
     handleScore(finalScore);
   };
 
-  // useEffect(() => {
-  //   handleScore(finalScore);
-  // });
+  useEffect(() => {
+    setFinalScore(finalScore => finalScore + 1);
+  }, []);
 
   return (
     <>

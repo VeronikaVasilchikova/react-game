@@ -41,7 +41,7 @@ export const FormToLogin: React.FunctionComponent<FormDataItem> = (props) => {
 
   const handleSubmitForm = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    props.handlerFormFromParant(userName);
+    props.handlerFormFromParent(userName);
     history.push('/game');
   }
 
@@ -69,7 +69,6 @@ export const FormToLogin: React.FunctionComponent<FormDataItem> = (props) => {
           onSubmit={handleSubmitForm}
           >
           <TextField
-            id="outlined-basic"
             label='User Name'
             variant='outlined'
             required
@@ -81,7 +80,6 @@ export const FormToLogin: React.FunctionComponent<FormDataItem> = (props) => {
             className={classes.submit}
           />
           <TextField
-            id="outlined-basic"
             label='Password'
             variant='outlined'
             required
