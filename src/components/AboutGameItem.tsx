@@ -9,12 +9,14 @@ export const AboutGameItem: React.FunctionComponent<CarouselItem> = (props) => {
     card: {
       backgroundColor,
       borderRadius: 5,
-      padding: '75px 50px',
+      padding: '0 50px 50px',
       margin: '0px 25px',
       width: '500px',
       boxShadow: '20px 20px 20px black',
-      display: 'flex',
-      justifyContent: 'center',
+      textAlign: 'center',
+    },
+    descr: {
+      fontSize: '16px'
     }
   }));
 
@@ -23,7 +25,7 @@ export const AboutGameItem: React.FunctionComponent<CarouselItem> = (props) => {
   return (
     <Card className={classes.card}>
       <h2>{name}</h2>
-      <p>{description}</p>
+      <p className={classes.descr}>{description}</p>
     </Card>
   );
 }

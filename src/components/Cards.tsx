@@ -1,14 +1,29 @@
-import React from 'react';
-import useSound from 'use-sound';
+import React, { useEffect } from 'react';
 import { CardImages } from '../card-pictures/index';
 import { CardItem } from '../interfaces/interfaces';
-import CardClick from '../assets/sounds/CardClick.mp3';
 
 export const Cards: React.FunctionComponent<CardItem> = (props) => {
   let characters: any[] = [];
-  const [play] = useSound(
-    CardClick
-  );
+  const audioCardClick = new Audio('/sounds/CardClick.mp3');
+  const audioMatchCards = new Audio('/sounds/MatchCards.mp3');
+  const audioFailedMatch = new Audio('/sounds/FailedMatch.mp3');
+  const audioGameEnd = new Audio('/sounds/GameEnd.mp3');
+
+  const playOnCardClick = () => {
+    audioCardClick.play();
+  }
+
+  const playMatchCards = () => {
+    audioMatchCards.play();
+  }
+
+  const playFailedMatch = () => {
+    audioFailedMatch.play();
+  }
+
+  const playGameEnd = () => {
+    audioGameEnd.play();
+  }
 
   const onClickOption = (event: { target: any; }) => {
     let character = event.target;
@@ -20,6 +35,10 @@ export const Cards: React.FunctionComponent<CardItem> = (props) => {
     if(character !== characters[0]) {
       flipTheAction(character);
       characters.push(character);
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      if(props.isMutedGame) {
+        playOnCardClick();
+      }
     }
     else {
       flipTheAction(character);
@@ -28,20 +47,33 @@ export const Cards: React.FunctionComponent<CardItem> = (props) => {
 
     if (characters.length > 2) {
       if (!checkCardName(characters[0], characters[1])) {
-        flipTheAction(characters[0]);
-        flipTheAction(characters[1]);
-        characters.shift();
-        characters.shift();
+        if(props.isMutedGame) {
+          playFailedMatch();
+        }
+        setTimeout(() => {
+          flipTheAction(characters[0]);
+          flipTheAction(characters[1]);
+          characters.shift();
+          characters.shift();
+        }, 0);
       }
       else {
-        characters.shift();
-        characters.shift();
+        if(props.isMutedGame) {
+          playMatchCards();
+        }
+        setTimeout(() => {
+          characters.shift();
+          characters.shift();
+        }, 0);
       }
     }
 
     let allPictures = document.getElementsByClassName('image-blank');
     if (allPictures.length < 1) {
       props.endGame(true);
+      if(props.isMutedGame) {
+        playGameEnd();
+      }
       let reset = document.getElementsByClassName('image');
       for (let i = 0; i < reset.length; i++) {
         reset[i].classList.add('image-blank');

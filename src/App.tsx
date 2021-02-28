@@ -20,6 +20,7 @@ const App: React.FunctionComponent = () => {
   const [userName, setUserName] = useState('');
   const [userScore, setUserScore] = useState(0);
   const [darkStateTheme, setDarkStateTheme] = useState(false);
+  const [isSound, setSound] = useState(false);
 
   const darkTheme = createMuiTheme({
     palette: {
@@ -57,11 +58,20 @@ const App: React.FunctionComponent = () => {
     setDarkStateTheme(darkStateValue);
   }
 
+  const handleSound = (soundValue: boolean) => {
+    setSound(soundValue);
+  }
+
   return (
     <ThemeProvider theme={darkStateTheme ? darkTheme : lightTheme}>
       <CssBaseline />
       <BrowserRouter>
-        <Navbar userName={userName} userScore={userScore} handlerThemeFromParent={handleDarkstate} />
+        <Navbar
+          userName={userName}
+          userScore={userScore}
+          handlerThemeFromParent={handleDarkstate}
+          handlerSoundsFromParent={handleSound}
+        />
         <main>
           <Switch>
             <Route
@@ -74,10 +84,10 @@ const App: React.FunctionComponent = () => {
             <Route
               path="/game"
               render={(props) => (
-                <PlayTheGame {...props} handlerScoreFromParent={handleUserScore} />
+                <PlayTheGame {...props} handlerScoreFromParent={handleUserScore} isMutedValue={isSound} />
               )}
             />
-            <Redirect from='/' to='/login'/>
+            <Redirect from='/' to='/about'/>
           </Switch>
         </main>
         <Footer />

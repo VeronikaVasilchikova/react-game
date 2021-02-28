@@ -21,10 +21,12 @@ export interface CardImage {
 
 export interface CardItem {
   endGame: any;
+  isMutedGame: boolean;
 }
 
 export interface CardsData {
   endGame: any;
+  isMutedGame: boolean;
 }
 
 export interface EndGameItem {
@@ -39,6 +41,7 @@ export interface UserInfo {
   userName: string;
   userScore: number;
   handlerThemeFromParent: any;
+  handlerSoundsFromParent: any;
 }
 
 export interface FormDataItem {
@@ -47,6 +50,7 @@ export interface FormDataItem {
 
 export interface PlayTheGameItem {
   handlerScoreFromParent: any;
+  isMutedValue: boolean;
 }
 
 export type Direction = 'left' | 'right' | 'up' | 'down';

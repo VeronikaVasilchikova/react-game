@@ -27,7 +27,7 @@ export const PlayTheGame: React.FunctionComponent<PlayTheGameItem> = (props) => 
 
   return (
     <>
-      {showEndGame ? <EndGame newGame={handleEndGame} /> : <Game endGame={handleEndGame} />}
+      {showEndGame ? <EndGame newGame={handleEndGame} /> : <Game endGame={handleEndGame} isMutedGame={props.isMutedValue}/>}
     </>
   );
 }
