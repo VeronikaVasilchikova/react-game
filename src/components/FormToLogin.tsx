@@ -37,7 +37,6 @@ export const FormToLogin: React.FunctionComponent<FormDataItem> = (props) => {
   const classes = useStyles();
   const history = useHistory();
   const [userName, setUserName] = useState('');
-  const [userPassword, setUserPassword] = useState('');
 
   const handleSubmitForm = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
@@ -47,10 +46,6 @@ export const FormToLogin: React.FunctionComponent<FormDataItem> = (props) => {
 
   const handleUserNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(e.target.value);
-  }
-
-  const handleUserPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserPassword(e.target.value);
   }
 
   return (
@@ -65,8 +60,8 @@ export const FormToLogin: React.FunctionComponent<FormDataItem> = (props) => {
         </Typography>
         <form
           className={classes.form}
-          noValidate
           onSubmit={handleSubmitForm}
+          autoComplete="off"
           >
           <TextField
             label='User Name'
@@ -77,17 +72,6 @@ export const FormToLogin: React.FunctionComponent<FormDataItem> = (props) => {
             type='text'
             value={userName}
             onChange={handleUserNameChange}
-            className={classes.submit}
-          />
-          <TextField
-            label='Password'
-            variant='outlined'
-            required
-            fullWidth
-            name='password'
-            type='password'
-            value={userPassword}
-            onChange={handleUserPasswordChange}
             className={classes.submit}
           />
           <Button

@@ -1,26 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import { Navbar } from './components/Navbar';
-import { AboutGame } from './components/AboutGame';
-import { FormToLogin } from './components/FormToLogin';
-import { PlayTheGame } from './components/PlayTheGame';
-import { Footer } from './components/Footer';
 import {
   purple,
   deepPurple,
   lightBlue,
   blue,
 } from "@material-ui/core/colors";
-
-// For Switch Theming
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { Navbar } from './components/Navbar';
+import { AboutGame } from './components/AboutGame';
+import { FormToLogin } from './components/FormToLogin';
+import { PlayTheGame } from './components/PlayTheGame';
+import { Footer } from './components/Footer';
+import SaveGameState from './utils/saveGameState';
 
 const App: React.FunctionComponent = () => {
-  const [userName, setUserName] = useState('');
-  const [userScore, setUserScore] = useState(0);
-  const [darkStateTheme, setDarkStateTheme] = useState(false);
-  const [isSound, setSound] = useState(false);
+  const [userName, setUserName] = SaveGameState('userName', '');
+  const [userScore, setUserScore] = SaveGameState('userScore', 0);
+  const [darkStateTheme, setDarkStateTheme] = SaveGameState('isDarkState', false);
+  const [isSound, setSound] = SaveGameState('isMuted', false);
 
   const darkTheme = createMuiTheme({
     palette: {

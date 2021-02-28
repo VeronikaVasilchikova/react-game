@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import GameIcon from '@material-ui/icons/Games';
@@ -13,6 +13,7 @@ import Brightness7Icon from '@material-ui/icons/Brightness7';
 import IconButton from '@material-ui/core/IconButton';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import VolumeOffIcon from '@material-ui/icons/VolumeOff';
+import SaveGameState from '../utils/saveGameState';
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -31,8 +32,8 @@ const useStyles = makeStyles((theme) => ({
 
 export const Navbar: React.FunctionComponent<UserInfo> = (props) => {
   const classes = useStyles();
-  const [isDarkState, setDarkState] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isDarkState, setDarkState] = SaveGameState('isDarkState', false);
+  const [isMuted, setIsMuted] = SaveGameState('isMuted', false);
 
   const handleThemeChange = () => {
     setDarkState(!isDarkState);
