@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useHistory } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import GameIcon from '@material-ui/icons/Games';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
-import { makeStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import { UserInfo } from '../interfaces/interfaces';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
@@ -20,6 +19,7 @@ export const Navbar: React.FunctionComponent<UserInfo> = (props) => {
   const classes = navbarStyles();
   const [isDarkState, setDarkState] = SaveGameState('isDarkState', false);
   const [isMuted, setIsMuted] = SaveGameState('isMuted', false);
+  const history = useHistory();
 
   const handleThemeChange = () => {
     setDarkState(!isDarkState);
@@ -28,6 +28,13 @@ export const Navbar: React.FunctionComponent<UserInfo> = (props) => {
   const handleSoundChange = () => {
     setIsMuted(!isMuted);
   };
+
+  const handleExitLogin = () => {
+    props.handlerUserNameFromParent('');
+    props.handlerUserScoreFromParent(0);
+    localStorage.clear();
+    history.push('/login');
+  }
 
   useEffect(() => {
     props.handlerThemeFromParent(isDarkState);
@@ -65,8 +72,24 @@ export const Navbar: React.FunctionComponent<UserInfo> = (props) => {
             {isMuted ? <VolumeUpIcon /> : <VolumeOffIcon />}
           </IconButton>
         </Tooltip>
-        <Link color='inherit' to='/about' component={RouterLink} className={classes.link}>About the game</Link>
-        <Link color='inherit' to='/login' component={RouterLink} className={classes.linkText}>{props.userName ? 'Exit' : 'Login'}</Link>
+        <Link
+          color='inherit'
+          to='/about'
+          component={RouterLink}
+          className={classes.link}
+        >
+          About the game
+        </Link>
+        <Link
+          color='inherit'
+          // to='/login'
+          // component={RouterLink}
+          component="button"
+          className={classes.linkText}
+          onClick={handleExitLogin}
+        >
+          {props.userName ? 'Exit' : 'Login'}
+        </Link>
       </Toolbar>
     </AppBar>
   )

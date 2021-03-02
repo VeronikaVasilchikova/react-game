@@ -70,6 +70,8 @@ const App: React.FunctionComponent = () => {
           userScore={userScore}
           handlerThemeFromParent={handleDarkstate}
           handlerSoundsFromParent={handleSound}
+          handlerUserNameFromParent={handleUserName}
+          handlerUserScoreFromParent={handleUserScore}
         />
         <main>
           <Switch>

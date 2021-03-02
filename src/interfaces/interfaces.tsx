@@ -41,6 +41,8 @@ export interface UserInfo {
   userScore: number;
   handlerThemeFromParent: any;
   handlerSoundsFromParent: any;
+  handlerUserNameFromParent: any;
+  handlerUserScoreFromParent: any;
 }
 
 export interface FormDataItem {
