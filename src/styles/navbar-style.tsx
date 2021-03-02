@@ -17,8 +17,7 @@ const navbarStyles = makeStyles((theme) => ({
       fontSize: '14px',
     },
     [theme.breakpoints.down('sm')]: {
-      flexGrow: 'initial',
-      marginRight: theme.spacing(2),
+      flexGrow: 1,
       fontSize: '10px',
     },
   },

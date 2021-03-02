@@ -58,7 +58,7 @@ code {
 
 .about-game {
   width: 500px;
-  margin: 20% auto;
+  margin: 15% auto;
   position: relative;
   cursor: pointer;
 }
@@ -73,7 +73,7 @@ code {
 }
 
 .about-arrow.left {
-  left: 0%;
+  left: -15%;
 }
 
 .max-container.fullscreen {
@@ -85,15 +85,25 @@ code {
   padding: 10rem;
 }
 
-@media (max-width: 1270px) {
+@media (max-width: 1024px) {
+  .about-game {
+    width: 400px;
+    margin: 10% auto;
+  }
   .about-arrow.right {
-    right: 7%;
+    right: -20%;
+  }
+  .card-field {
+    width: 750px;
+  }
+  .card-field > * {
+    width: 160px;
+    height: 190px;
   }
 }
 
 @media (max-width: 960px) {
   .about-game {
-    width: 400px;
     margin: 25% auto;
   }
 }
@@ -102,7 +112,6 @@ code {
   .card-field {
     width: 600px;
   }
-
   .card-field > * {
     width: 120px;
     height: 142px;
@@ -112,23 +121,35 @@ code {
 
 @media (max-width: 640px) {
   .card-field {
-    width: 460px;
+    width: 520px;
   }
-
   .card-field > * {
-    width: 90px;
-    height: 108px;
-    margin: 12px;
+    width: 100px;
+    height: 120px;
+    margin: 15px;
   }
 }
 
 @media (max-width: 600px) {
   .about-game {
-    width: 350px;
+    width: 320px;
     margin: 45% auto;
   }
 
   .about-arrow.right {
-    right: -5%;
+    right: -12%;
   }
+}
+
+@media (max-width: 540px) {
+  .card-field {
+    width: 460px;
+    margin: 15% auto;
+  }
+  .card-field > * {
+    width: 85px;
+    height: 100px;
+    margin: 15px;
+  }
+
 }
