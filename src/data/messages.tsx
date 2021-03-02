@@ -2,19 +2,19 @@ import { MessageItem } from '../interfaces/interfaces';
 
 export const messages: Array<MessageItem> = [
   {
-    title: "Well Done",
-    text: "How about another go?"
+    title: "Well Done!",
+    text: "I find your lack of faith disturbing"
   },
   {
-    title: "Good Job",
-    text: "I bet you can not do that again?"
+    title: "Good Job!",
+    text: "The Force will be with you. Always!"
   },
   {
-    title: "Look at you",
-    text: "You think you can do it faster next time?",
+    title: "You are hero!",
+    text: "Do. Or do not. There is no try.",
   },
   {
     title: "Way to go!",
-    text: "That was lightening fast, Try again?"
+    text: "Power! Unlimited power!"
   },
 ];
