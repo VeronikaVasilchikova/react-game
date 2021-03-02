@@ -14,20 +14,23 @@ export const PlayTheGame: React.FunctionComponent<PlayTheGameItem> = (props) => 
   const handleEndGame = (param: boolean) => {
     if(param) {
       setShowEndGame(true);
+      setFinalScore(finalScore + 1);
     }
     else {
       setShowEndGame(false);
     }
-    handleScore(finalScore);
   };
 
   useEffect(() => {
-    setFinalScore(finalScore => finalScore + 1);
-  }, []);
+    handleScore(finalScore);
+  });
 
   return (
     <>
-      {showEndGame ? <EndGame newGame={handleEndGame} /> : <Game endGame={handleEndGame} isMutedGame={props.isMutedValue}/>}
+      {showEndGame ?
+        <EndGame newGame={handleEndGame} /> :
+        <Game endGame={handleEndGame} isMutedGame={props.isMutedValue}/>
+      }
     </>
   );
 }

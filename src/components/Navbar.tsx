@@ -34,7 +34,7 @@ export const Navbar: React.FunctionComponent<UserInfo> = (props) => {
     props.handlerUserScoreFromParent(0);
     localStorage.clear();
     history.push('/login');
-  }
+  };
 
   useEffect(() => {
     props.handlerThemeFromParent(isDarkState);
