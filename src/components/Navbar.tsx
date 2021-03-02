@@ -82,8 +82,6 @@ export const Navbar: React.FunctionComponent<UserInfo> = (props) => {
         </Link>
         <Link
           color='inherit'
-          // to='/login'
-          // component={RouterLink}
           component="button"
           className={classes.linkText}
           onClick={handleExitLogin}
