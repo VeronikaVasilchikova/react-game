@@ -45,7 +45,7 @@ export const Copyright: React.FunctionComponent = () => {
           <YoutubeIcon className={classes.icon}/>
           <Link
             color='inherit'
-            href='https://github.com/VeronikaVasilchikova/react-game'
+            href='https://youtu.be/tK1yV-PF8us'
             target="_blank"
             rel="noopener"
           >
