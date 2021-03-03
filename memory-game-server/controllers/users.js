@@ -24,11 +24,9 @@ function saveUsers(users) {
 function saveUser(user) {
   return getUsers()
     .then(users => {
-      const id = users[users.length - 1].id + 1;
-      const userWithId = Object.assign({}, user, { id });
-      const newUsers= users.concat(userWithId);
+      users.push(user);
 
-      return saveUsers(newUsers);
+      return saveUsers(users);
     })
 }
 

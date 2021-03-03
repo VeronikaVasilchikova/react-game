@@ -29,10 +29,26 @@ export const Navbar: React.FunctionComponent<UserInfo> = (props) => {
     setIsMuted(!isMuted);
   };
 
+  const storeUserData = () => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        userName: props.userName,
+        userScore: props.userScore,
+        gameDate: new Date()
+      })
+    };
+
+    fetch('http://localhost:9000/users', requestOptions)
+      .then(response => response.json());
+  }
+
   const handleExitLogin = () => {
     props.handlerUserNameFromParent('');
     props.handlerUserScoreFromParent(0);
     localStorage.clear();
+    storeUserData();
     history.push('/login');
   };
 
